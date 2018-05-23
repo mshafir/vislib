@@ -26,6 +26,8 @@ class Visualization:
 
     def display(self, width=600, height=400, **kwargs):
         title = kwargs['title'] if 'title' in kwargs else 'untitled_'+self.type
+        if not os.path.exists('output'):
+            os.makedirs('output')
         outfile = 'output/'+title+'.html'
         fout = open(outfile, 'w')
         fout.write(self.render(**kwargs))
