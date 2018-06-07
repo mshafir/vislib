@@ -1,0 +1,12 @@
+README.md
+setup.py
+vislib/__init__.py
+vislib/taucharts.py
+vislib/treant.py
+vislib/visjs.py
+vislib.egg-info/PKG-INFO
+vislib.egg-info/SOURCES.txt
+vislib.egg-info/dependency_links.txt
+vislib.egg-info/not-zip-safe
+vislib.egg-info/requires.txt
+vislib.egg-info/top_level.txt

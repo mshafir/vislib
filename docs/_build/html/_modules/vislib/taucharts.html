@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>vislib.taucharts &mdash; vislib 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="vislib 0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> vislib
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">vislib</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>vislib.taucharts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for vislib.taucharts</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">vislib.core.core_utils</span> <span class="k">import</span> <span class="n">convert_data</span>
+<span class="kn">from</span> <span class="nn">vislib.core.visualization</span> <span class="k">import</span> <span class="n">BasicVisualization</span><span class="p">,</span> <span class="n">Asset</span>
+
+
+<div class="viewcode-block" id="Taucharts"><a class="viewcode-back" href="../../vislib.html#vislib.taucharts.Taucharts">[docs]</a><span class="k">class</span> <span class="nc">Taucharts</span><span class="p">(</span><span class="n">BasicVisualization</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">BasicVisualization</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                                    <span class="s1">&#39;Timeline&#39;</span><span class="p">,</span>
+                                    <span class="p">[</span><span class="n">Asset</span><span class="p">(</span><span class="s1">&#39;//cdn.jsdelivr.net/d3js/3.5.17/d3.min.js&#39;</span><span class="p">,</span> <span class="s1">&#39;js&#39;</span><span class="p">),</span>
+                                     <span class="n">Asset</span><span class="p">(</span><span class="s1">&#39;//cdn.jsdelivr.net/npm/taucharts@1/build/production/tauCharts.min.js&#39;</span><span class="p">,</span> <span class="s1">&#39;js&#39;</span><span class="p">),</span>
+                                     <span class="n">Asset</span><span class="p">(</span><span class="s1">&#39;//cdn.jsdelivr.net/npm/taucharts@1/build/production/tauCharts.min.css&#39;</span><span class="p">,</span> <span class="s1">&#39;css&#39;</span><span class="p">)],</span>
+                                    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                                    var options = {{ options }};</span>
+<span class="sd">                                    options[&#39;plugins&#39;] = [</span>
+<span class="sd">                                        tauCharts.api.plugins.get(&#39;tooltip&#39;)(),</span>
+<span class="sd">                                        tauCharts.api.plugins.get(&#39;legend&#39;)()</span>
+<span class="sd">                                    ];</span>
+<span class="sd">                                    var chart = new tauCharts.Chart(options);</span>
+<span class="sd">                                    chart.renderTo(&#39;#visualization&#39;);</span>
+<span class="sd">                                    &quot;&quot;&quot;</span><span class="p">,</span>
+                                    <span class="p">{</span>
+                                        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s1">&#39;line&#39;</span><span class="p">,</span>
+                                    <span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+
+<div class="viewcode-block" id="Taucharts.get_parameters"><a class="viewcode-back" href="../../vislib.html#vislib.taucharts.Taucharts.get_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">get_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">options</span>
+        <span class="n">params</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span>
+        <span class="n">params</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">params</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span>
+
+        <span class="n">params</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;options&#39;</span><span class="p">:</span> <span class="n">params</span><span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="chart"><a class="viewcode-back" href="../../index.html#vislib.taucharts.chart">[docs]</a><span class="k">def</span> <span class="nf">chart</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Renders a basic taucharts chart with the given data. See https://www.taucharts.com/</span>
+
+<span class="sd">    &gt;&gt;&gt; from vislib.taucharts import chart</span>
+<span class="sd">    &gt;&gt;&gt; chart([{&#39;item&#39;: &#39;car&#39;, &#39;amount&#39;: 1},</span>
+<span class="sd">    &gt;&gt;&gt;        {&#39;item&#39;: &#39;book&#39;, &#39;amount&#39;: 10},</span>
+<span class="sd">    &gt;&gt;&gt;        {&#39;item&#39;: &#39;bed&#39;, &#39;amount&#39;: 3}], x=&#39;item&#39;, y=&#39;amount&#39;, title=&#39;Taucharts example&#39;)</span>
+
+<span class="sd">    :param data: a pandas DataFrame or list of dictionaries that specify the data to visualize</span>
+<span class="sd">    :param x: the field to map as the x coordinate</span>
+<span class="sd">    :param y: the field to map as the y coordinate</span>
+<span class="sd">    :param color: the field to map to the color of the datapoints</span>
+<span class="sd">    :param title: A title to assign to your timeline view, this will be the filename of the saved html file on disk</span>
+<span class="sd">    :param width:</span>
+<span class="sd">    :param height:</span>
+<span class="sd">    :param options: Additional options to pass as the chart definition (See https://api.taucharts.com/basic/index.html)</span>
+<span class="sd">        Some common options include</span>
+<span class="sd">        * type: scatterplot, line, bar, horizontalBar, stacked-bar, stacked-area</span>
+<span class="sd">        * size: field to map to the size of a node</span>
+<span class="sd">        * dimensions: allows setting custom axis labels and types</span>
+<span class="sd">        * guide: allows customizing visual elements of the chart presentation</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Taucharts</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Michael Shafir.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

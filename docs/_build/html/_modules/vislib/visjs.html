@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>vislib.visjs &mdash; vislib 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="vislib 0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> vislib
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">vislib</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>vislib.visjs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for vislib.visjs</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">from</span> <span class="nn">vislib.core.core_utils</span> <span class="k">import</span> <span class="n">convert_data</span>
+<span class="kn">from</span> <span class="nn">vislib.core.time_utils</span> <span class="k">import</span> <span class="n">convert_timestamp</span>
+<span class="kn">from</span> <span class="nn">vislib.core.visualization</span> <span class="k">import</span> <span class="n">BasicVisualization</span><span class="p">,</span> <span class="n">Asset</span>
+
+
+<div class="viewcode-block" id="Timeline"><a class="viewcode-back" href="../../vislib.html#vislib.visjs.Timeline">[docs]</a><span class="k">class</span> <span class="nc">Timeline</span><span class="p">(</span><span class="n">BasicVisualization</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content_field</span><span class="o">=</span><span class="s1">&#39;contents&#39;</span><span class="p">,</span> <span class="n">start_field</span><span class="o">=</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="n">end_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">type_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">group_field</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">BasicVisualization</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                                    <span class="s1">&#39;Timeline&#39;</span><span class="p">,</span>
+                                    <span class="p">[</span><span class="n">Asset</span><span class="p">(</span><span class="s1">&#39;//cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js&#39;</span><span class="p">,</span> <span class="s1">&#39;js&#39;</span><span class="p">),</span>
+                                     <span class="n">Asset</span><span class="p">(</span><span class="s1">&#39;//cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css&#39;</span><span class="p">,</span> <span class="s1">&#39;css&#39;</span><span class="p">)],</span>
+                                    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                                    var container = document.getElementById(&#39;visualization&#39;);</span>
+<span class="sd">                                    var items = new vis.DataSet({{ data }});</span>
+<span class="sd">                                    var timeline = new vis.Timeline(</span>
+<span class="sd">                                        document.getElementById(&#39;visualization&#39;), items,</span>
+<span class="sd">                                        {% if groups is defined %}{{ groups }}, {% endif %}</span>
+<span class="sd">                                        {{ options }});</span>
+<span class="sd">                                    &quot;&quot;&quot;</span><span class="p">,</span>
+                                    <span class="p">{</span>
+                                        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s1">&#39;point&#39;</span><span class="p">,</span>
+                                        <span class="s2">&quot;locale&quot;</span><span class="p">:</span> <span class="s1">&#39;en_US&#39;</span><span class="p">,</span>
+                                        <span class="s2">&quot;maxHeight&quot;</span><span class="p">:</span> <span class="s2">&quot;100vh&quot;</span><span class="p">,</span>
+                                        <span class="s2">&quot;maxWidth&quot;</span><span class="p">:</span> <span class="s2">&quot;100vw&quot;</span><span class="p">,</span>
+                                        <span class="s2">&quot;horizontalScroll&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                                        <span class="s2">&quot;stack&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                                        <span class="s2">&quot;orientation&quot;</span><span class="p">:</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span>
+                                        <span class="s2">&quot;zoomKey&quot;</span><span class="p">:</span> <span class="s1">&#39;crtlKey&#39;</span>
+                                    <span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">content_field</span> <span class="o">=</span> <span class="n">content_field</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_field</span> <span class="o">=</span> <span class="n">start_field</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_field</span> <span class="o">=</span> <span class="n">end_field</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type_field</span> <span class="o">=</span> <span class="n">type_field</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">group_field</span> <span class="o">=</span> <span class="n">group_field</span>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Timeline.add_field"><a class="viewcode-back" href="../../vislib.html#vislib.visjs.Timeline.add_field">[docs]</a>    <span class="k">def</span> <span class="nf">add_field</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">source_data</span><span class="p">,</span> <span class="n">field_target</span><span class="p">,</span> <span class="n">field_source</span><span class="p">,</span> <span class="n">convert</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">field_source</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">source_data</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">convert</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">convert</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="n">field_source</span><span class="p">])</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">field_target</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span></div>
+
+<div class="viewcode-block" id="Timeline.get_parameters"><a class="viewcode-back" href="../../vislib.html#vislib.visjs.Timeline.get_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">get_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">convert_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">timeline_data</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">i</span><span class="p">,</span>
+                          <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">content_field</span><span class="p">],</span>
+                          <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">convert_timestamp</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">start_field</span><span class="p">])}</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">)]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="n">timeline_data</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_field</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">convert_timestamp</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="n">timeline_data</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">type_field</span><span class="p">)</span>
+        <span class="n">groups</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">def</span> <span class="nf">register_group</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+                <span class="n">groups</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">groups</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">groups</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="n">timeline_data</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_field</span><span class="p">,</span> <span class="n">register_group</span><span class="p">)</span>
+        <span class="n">params</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">timeline_data</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">groups</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;groups&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">([{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="nb">id</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">group</span><span class="p">}</span> <span class="k">for</span> <span class="n">group</span><span class="p">,</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">groups</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+
+        <span class="k">return</span> <span class="n">params</span></div></div>
+
+
+<div class="viewcode-block" id="timeline"><a class="viewcode-back" href="../../index.html#vislib.visjs.timeline">[docs]</a><span class="k">def</span> <span class="nf">timeline</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">content_field</span><span class="o">=</span><span class="s1">&#39;contents&#39;</span><span class="p">,</span> <span class="n">start_field</span><span class="o">=</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="n">end_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">type_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">group_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+             <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Renders a vis.js timeline component (See http://visjs.org/docs/timeline/ for more information)</span>
+
+<span class="sd">    :Example:</span>
+<span class="sd">    &gt;&gt;&gt; from vislib.visjs import timeline</span>
+<span class="sd">    &gt;&gt;&gt; timeline([{&#39;text&#39;: &#39;first item&#39;, &#39;start&#39;: &#39;2018-05-21 17:30:08.202&#39;},</span>
+<span class="sd">    &gt;&gt;&gt;           {&#39;text&#39;: &#39;second item&#39;, &#39;start&#39;: &quot;2018-05-21 17:31:53.712&quot;},</span>
+<span class="sd">    &gt;&gt;&gt;           {&#39;text&#39;: &#39;third item&#39;, &#39;start&#39;: &quot;2018-05-21 18:14:05.843&quot;}], content_field=&#39;text&#39;, title=&#39;example1&#39;)</span>
+
+<span class="sd">    :param data: a pandas DataFrame or list of dictionaries that specify the data to visualize</span>
+<span class="sd">    :param content_field: the field representing the textual contents of each timeline node</span>
+<span class="sd">    :param start_field: the field representing the start time (as a date or string) of each timeline node</span>
+<span class="sd">    :param end_field: the field representing the end time of each timeline node</span>
+<span class="sd">    :param type_field: the field representing the type of node. Can be &#39;box&#39;, &#39;point&#39; (default), &#39;range&#39;, or &#39;background&#39;</span>
+<span class="sd">    :param group_field: the field representing the group name to assign the timeline node to. Groups appear as swimlanes</span>
+<span class="sd">        in the timeline view if they exist</span>
+<span class="sd">    :param title: A title to assign to your timeline view, this will be the filename of the saved html file on disk</span>
+<span class="sd">    :param height:</span>
+<span class="sd">    :param width:</span>
+<span class="sd">    :param options: Additional options to specify for the timeline. See http://visjs.org/docs/timeline/#Configuration_Options</span>
+<span class="sd">    :return: in ipython, a visualized timeline, otherwise None, but triggers opening your default browser with the generated file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span>
+        <span class="n">content_field</span><span class="o">=</span><span class="n">content_field</span><span class="p">,</span>
+        <span class="n">start_field</span><span class="o">=</span><span class="n">start_field</span><span class="p">,</span>
+        <span class="n">end_field</span><span class="o">=</span><span class="n">end_field</span><span class="p">,</span>
+        <span class="n">type_field</span><span class="o">=</span><span class="n">type_field</span><span class="p">,</span>
+        <span class="n">group_field</span><span class="o">=</span><span class="n">group_field</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Michael Shafir.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
