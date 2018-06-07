@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>vislib &mdash; vislib 0.1 documentation</title>
+  <title>vislib package &mdash; vislib 0.1 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="vislib 0.1 documentation" href="#"/> 
+    <link rel="top" title="vislib 0.1 documentation" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -54,7 +54,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> vislib
+            <a href="index.html" class="icon icon-home"> vislib
           
 
           
@@ -90,15 +90,13 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">vislib</a><ul>
-<li><a class="reference internal" href="#introduction">Introduction</a></li>
-<li><a class="reference internal" href="#currently-supported-visualizations">Currently Supported Visualizations</a><ul>
-<li><a class="reference internal" href="#vis-js">vis.js</a></li>
-<li><a class="reference internal" href="#taucharts">Taucharts</a></li>
-<li><a class="reference internal" href="#treant">Treant</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#">vislib package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-vislib.taucharts">vislib.taucharts module</a></li>
+<li><a class="reference internal" href="#module-vislib.treant">vislib.treant module</a></li>
+<li><a class="reference internal" href="#module-vislib.visjs">vislib.visjs module</a></li>
+<li><a class="reference internal" href="#module-vislib">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -115,7 +113,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">vislib</a>
+          <a href="index.html">vislib</a>
         
       </nav>
 
@@ -143,15 +141,15 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#">Docs</a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>vislib</li>
+      <li>vislib package</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/vislib.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -164,78 +162,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="vislib">
-<h1>vislib<a class="headerlink" href="#vislib" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="vislib-package">
+<h1>vislib package<a class="headerlink" href="#vislib-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
-</div>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>vislib is a library that wraps common javascript visualization libraries. The variety and capabilities of javascript
-visualization libraries far exceed what exists in python. Though native python libraries will always have better
-integration support, the goal here is to provide a quick and dirty way to embed rich html visualizations as iframes into an
-iptyhon environment or generate them as standalone html files.</p>
-<p>The core vislib package provides an abstraction that makes it easy to add new wrappers for additional javascript libraries.
-It uses the jinja2 templating library and some standard boilerplate templates to just expose the raw capabilities of
-each library.</p>
-<p>Each visualization is an attempt to strike a balance between completeness, consistency, and simplicity for the visualization API.
-Feedback is welcome!</p>
-</div>
-<div class="section" id="currently-supported-visualizations">
-<h2>Currently Supported Visualizations<a class="headerlink" href="#currently-supported-visualizations" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="vis-js">
-<h3>vis.js<a class="headerlink" href="#vis-js" title="Permalink to this headline">¶</a></h3>
-<p>A library for rich interactive timelines: <a class="reference external" href="http://visjs.org/docs/timeline/">visjs timelines</a></p>
-<span class="target" id="module-vislib.visjs"></span><dl class="function">
-<dt id="vislib.visjs.timeline">
-<code class="descclassname">vislib.visjs.</code><code class="descname">timeline</code><span class="sig-paren">(</span><em>data</em>, <em>content_field='contents'</em>, <em>start_field='start'</em>, <em>end_field=None</em>, <em>type_field=None</em>, <em>group_field=None</em>, <em>title=None</em>, <em>width=600</em>, <em>height=400</em>, <em>**options</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/vislib/visjs.html#timeline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vislib.visjs.timeline" title="Permalink to this definition">¶</a></dt>
-<dd><p>Renders a vis.js timeline component (See <a class="reference external" href="http://visjs.org/docs/timeline/">http://visjs.org/docs/timeline/</a> for more information)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vislib.visjs</span> <span class="k">import</span> <span class="n">timeline</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">timeline</span><span class="p">([{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;first item&#39;</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">:</span> <span class="s1">&#39;2018-05-21 17:30:08.202&#39;</span><span class="p">},</span>
-<span class="gp">&gt;&gt;&gt; </span>          <span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;second item&#39;</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">:</span> <span class="s2">&quot;2018-05-21 17:31:53.712&quot;</span><span class="p">},</span>
-<span class="gp">&gt;&gt;&gt; </span>          <span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;third item&#39;</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">:</span> <span class="s2">&quot;2018-05-21 18:14:05.843&quot;</span><span class="p">}],</span> <span class="n">content_field</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;example1&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>data</strong> &#8211; a pandas DataFrame or list of dictionaries that specify the data to visualize</li>
-<li><strong>content_field</strong> &#8211; the field representing the textual contents of each timeline node</li>
-<li><strong>start_field</strong> &#8211; the field representing the start time (as a date or string) of each timeline node</li>
-<li><strong>end_field</strong> &#8211; the field representing the end time of each timeline node</li>
-<li><strong>type_field</strong> &#8211; the field representing the type of node. Can be &#8216;box&#8217;, &#8216;point&#8217; (default), &#8216;range&#8217;, or &#8216;background&#8217;</li>
-<li><strong>group_field</strong> &#8211; the field representing the group name to assign the timeline node to. Groups appear as swimlanes
-in the timeline view if they exist</li>
-<li><strong>title</strong> &#8211; A title to assign to your timeline view, this will be the filename of the saved html file on disk</li>
-<li><strong>height</strong> &#8211; </li>
-<li><strong>width</strong> &#8211; </li>
-<li><strong>options</strong> &#8211; Additional options to specify for the timeline. See <a class="reference external" href="http://visjs.org/docs/timeline/#Configuration_Options">http://visjs.org/docs/timeline/#Configuration_Options</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vislib.core.html">vislib.core package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vislib.core.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vislib.core.html#module-vislib.core.visualization">vislib.core.visualization module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vislib.core.html#module-vislib.core">Module contents</a></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">in ipython, a visualized timeline, otherwise None, but triggers opening your default browser with the generated file</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
+</li>
+</ul>
 </div>
-<div class="section" id="taucharts">
-<h3>Taucharts<a class="headerlink" href="#taucharts" title="Permalink to this headline">¶</a></h3>
-<p>A d3 based charting library that elegantly mixes power and simplicity, allowing for unique faceted charts: <a class="reference external" href="https://www.taucharts.com/">taucharts</a></p>
-<span class="target" id="module-vislib.taucharts"></span><dl class="function">
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-vislib.taucharts">
+<span id="vislib-taucharts-module"></span><h2>vislib.taucharts module<a class="headerlink" href="#module-vislib.taucharts" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
 <dt id="vislib.taucharts.chart">
-<code class="descclassname">vislib.taucharts.</code><code class="descname">chart</code><span class="sig-paren">(</span><em>data</em>, <em>x</em>, <em>y</em>, <em>color=None</em>, <em>title=None</em>, <em>width=800</em>, <em>height=400</em>, <em>**options</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/vislib/taucharts.html#chart"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vislib.taucharts.chart" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vislib.taucharts.</code><code class="descname">chart</code><span class="sig-paren">(</span><em>data</em>, <em>x</em>, <em>y</em>, <em>color=None</em>, <em>title=None</em>, <em>width=800</em>, <em>height=400</em>, <em>**options</em><span class="sig-paren">)</span><a class="headerlink" href="#vislib.taucharts.chart" title="Permalink to this definition">¶</a></dt>
 <dd><p>Renders a basic taucharts chart with the given data. See <a class="reference external" href="https://www.taucharts.com/">https://www.taucharts.com/</a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vislib.taucharts</span> <span class="k">import</span> <span class="n">chart</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="p">([{</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;amount&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
@@ -272,12 +221,11 @@ Some common options include
 </dd></dl>
 
 </div>
-<div class="section" id="treant">
-<h3>Treant<a class="headerlink" href="#treant" title="Permalink to this headline">¶</a></h3>
-<p>A tree generation library that generates customizable interactive tree hierarchies: <a class="reference external" href="http://fperucic.github.io/treant-js/">Treant</a></p>
-<span class="target" id="module-vislib.treant"></span><dl class="function">
+<div class="section" id="module-vislib.treant">
+<span id="vislib-treant-module"></span><h2>vislib.treant module<a class="headerlink" href="#module-vislib.treant" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
 <dt id="vislib.treant.tree">
-<code class="descclassname">vislib.treant.</code><code class="descname">tree</code><span class="sig-paren">(</span><em>data</em>, <em>title=None</em>, <em>width=800</em>, <em>height=400</em>, <em>styling=''</em>, <em>**options</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/vislib/treant.html#tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vislib.treant.tree" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vislib.treant.</code><code class="descname">tree</code><span class="sig-paren">(</span><em>data</em>, <em>title=None</em>, <em>width=800</em>, <em>height=400</em>, <em>styling=''</em>, <em>**options</em><span class="sig-paren">)</span><a class="headerlink" href="#vislib.treant.tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Renders a Treant.js tree. See <a class="reference external" href="http://fperucic.github.io/treant-js/">http://fperucic.github.io/treant-js/</a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -320,11 +268,55 @@ Some common options include
 </dd></dl>
 
 </div>
+<div class="section" id="module-vislib.visjs">
+<span id="vislib-visjs-module"></span><h2>vislib.visjs module<a class="headerlink" href="#module-vislib.visjs" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="vislib.visjs.timeline">
+<code class="descclassname">vislib.visjs.</code><code class="descname">timeline</code><span class="sig-paren">(</span><em>data</em>, <em>content_field='contents'</em>, <em>start_field='start'</em>, <em>end_field=None</em>, <em>type_field=None</em>, <em>group_field=None</em>, <em>title=None</em>, <em>width=600</em>, <em>height=400</em>, <em>**options</em><span class="sig-paren">)</span><a class="headerlink" href="#vislib.visjs.timeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders a vis.js timeline component (See <a class="reference external" href="http://visjs.org/docs/timeline/">http://visjs.org/docs/timeline/</a> for more information)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vislib.visjs</span> <span class="k">import</span> <span class="n">timeline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timeline</span><span class="p">([{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;first item&#39;</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">:</span> <span class="s1">&#39;2018-05-21 17:30:08.202&#39;</span><span class="p">},</span>
+<span class="gp">&gt;&gt;&gt; </span>          <span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;second item&#39;</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">:</span> <span class="s2">&quot;2018-05-21 17:31:53.712&quot;</span><span class="p">},</span>
+<span class="gp">&gt;&gt;&gt; </span>          <span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;third item&#39;</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">:</span> <span class="s2">&quot;2018-05-21 18:14:05.843&quot;</span><span class="p">}],</span> <span class="n">content_field</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;example1&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="indices-and-tables">
-<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p>
-<p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> &#8211; a pandas DataFrame or list of dictionaries that specify the data to visualize</li>
+<li><strong>content_field</strong> &#8211; the field representing the textual contents of each timeline node</li>
+<li><strong>start_field</strong> &#8211; the field representing the start time (as a date or string) of each timeline node</li>
+<li><strong>end_field</strong> &#8211; the field representing the end time of each timeline node</li>
+<li><strong>type_field</strong> &#8211; the field representing the type of node. Can be &#8216;box&#8217;, &#8216;point&#8217; (default), &#8216;range&#8217;, or &#8216;background&#8217;</li>
+<li><strong>group_field</strong> &#8211; the field representing the group name to assign the timeline node to. Groups appear as swimlanes
+in the timeline view if they exist</li>
+<li><strong>title</strong> &#8211; A title to assign to your timeline view, this will be the filename of the saved html file on disk</li>
+<li><strong>height</strong> &#8211; </li>
+<li><strong>width</strong> &#8211; </li>
+<li><strong>options</strong> &#8211; Additional options to specify for the timeline. See <a class="reference external" href="http://visjs.org/docs/timeline/#Configuration_Options">http://visjs.org/docs/timeline/#Configuration_Options</a></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">in ipython, a visualized timeline, otherwise None, but triggers opening your default browser with the generated file</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-vislib">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-vislib" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
