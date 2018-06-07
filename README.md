@@ -1,5 +1,15 @@
 # vislib
-A library of web-based visualizations for python and ipython
+vislib is a library that wraps common javascript visualization libraries. The variety and capabilities of javascript
+visualization libraries exceed what exists in python. Though native python libraries will always have better
+integration support, the goal here is to provide a quick and dirty way to embed rich html visualizations as iframes into an
+ipython environment or generate them as standalone html files.
+
+The core vislib package provides an abstraction that makes it easy to add new wrappers for additional javascript libraries.
+It uses the jinja2 templating library and some standard boilerplate templates to expose the raw capabilities of
+each library.
+
+Each visualization is an attempt to strike a balance between completeness, consistency, and simplicity for the visualization API.
+Feedback is welcome!
 
 ## Set Up / Usage
 
@@ -59,11 +69,13 @@ tree({
 
 ```
  cd docs
+ rm -rf _build
  make html
 ```
 
 ### Publish
 ```
+rm -rf dist
 python setup.py sdist bdist_wheel
 twine upload dist/*
 ```
