@@ -7,7 +7,6 @@ SPHINXBUILD   = sphinx-build
 SPHINXPROJ    = vislib
 SOURCEDIR     = .
 BUILDDIR      = _build
-GH_PAGES_SOURCES = docs
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -24,10 +23,12 @@ gh-pages:
 	cd ..
 	git checkout gh-pages
 	rm -rf build _sources _static
-	git checkout master $(GH_PAGES_SOURCES)
+	git checkout master docs
 	git reset HEAD
+	cd docs
 	make html
-	mv -fv build/html/* ./
-	rm -rf $(GH_PAGES_SOURCES) build
+	mv -fv build/html/* ../
+	cd ..
+	rm -rf docs
 	git add -A
 	git ci -m "Generated gh-pages for `git log master -1 --pretty=short --abbrev-commit`" && git push origin gh-pages ; git checkout master
