@@ -1,4 +1,7 @@
 # vislib
+
+https://mshafir.github.io/vislib/
+
 vislib is a library that wraps common javascript visualization libraries. The variety and capabilities of javascript
 visualization libraries exceed what exists in python. Though native python libraries will always have better
 integration support, the goal here is to provide a quick and dirty way to embed rich html visualizations as iframes into an
