@@ -24,6 +24,17 @@ class Treant(BasicVisualization):
         return {'chart_data': json.dumps(data)}
 
 
+BASIC_STYLING = """
+.node {
+    border: 1px solid black;
+    padding: 0.4rem;
+    border-radius: 0.2rem;
+    background-color: #fafafa;
+    box-shadow: 2px 2px 4px #aaa;
+}
+"""
+
+
 def tree(data, title=None, width=800, height=400, styling='', **options):
     """Renders a Treant.js tree. See http://fperucic.github.io/treant-js/
 

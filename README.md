@@ -38,6 +38,8 @@ timeline([{'text': 'first item', 'start': '2018-05-21 17:30:08.202'},
           {'text': 'third item', 'start': "2018-05-21 18:14:05.843"}], content_field='text', title='example1')
 ```
 
+![alt text](https://github.com/mshafir/vislib/raw/master/images/timeline.png "Timeline")
+
 ### Taucharts
 
 A d3 based charting library that elegantly mixes power and simplicity.
@@ -49,6 +51,8 @@ chart([{'item': 'car', 'amount': 1},
        {'item': 'book', 'amount': 10},
        {'item': 'bed', 'amount': 3}], x='item', y='amount', title='Taucharts example')
 ```
+
+![alt text](https://github.com/mshafir/vislib/raw/master/images/tauchart.png "Tauchart")
 
 ### Treant
 
@@ -65,6 +69,8 @@ tree({
         }]
     })
 ```
+
+![alt text](https://github.com/mshafir/vislib/raw/master/images/treant.png "Treant")
 
 ## Development
 

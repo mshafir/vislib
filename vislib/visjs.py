@@ -27,7 +27,7 @@ class Timeline(BasicVisualization):
                                         "horizontalScroll": True,
                                         "stack": True,
                                         "orientation": 'top',
-                                        "zoomKey": 'crtlKey'
+                                        "zoomKey": 'ctrlKey'
                                     })
         self.content_field = content_field
         self.start_field = start_field
