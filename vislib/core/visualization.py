@@ -36,11 +36,12 @@ class Asset:
 
 
 class BasicVisualization(Visualization):
-    def __init__(self, type, assets, initial_js, default_options, template='basic.html'):
+    def __init__(self, type, assets, initial_js, default_options, custom_style='', template='basic.html'):
         Visualization.__init__(self, type, template)
         self.assets = assets
         self.initial_js = initial_js
         self.options = default_options
+        self.custom_style = custom_style
 
     def set_option(self, name, value):
         self.options[name] = value
@@ -53,13 +54,14 @@ class BasicVisualization(Visualization):
     def generate_assets(self):
         return '\n'.join([a.generate_code() for a in self.assets])
 
-    def get_parameters(self, data):
+    def get_parameters(self, data, options):
         raise NotImplementedError
 
     def render(self, data):
-        params = self.get_parameters(data)
+        params = self.get_parameters(data, self.options)
         params['options'] = json.dumps(self.options)
         params['assets'] = self.generate_assets()
+        params['custom_style'] = self.custom_style
         params['js'] = Template(self.initial_js).render(**params)
         return self.render_template(**params)
 

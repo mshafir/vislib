@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name='vislib',
-      version='0.1',
+      version='0.2',
       description='Reusable html-based python visualization library',
       long_description=long_description,
       long_description_content_type="text/markdown",
