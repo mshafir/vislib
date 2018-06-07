@@ -27,8 +27,10 @@ gh-pages:
 	git reset HEAD
 	cd docs
 	make html
-	mv -fv build/html/* ../
+	mv -fv _build/html/* ../
 	cd ..
 	rm -rf docs
 	git add -A
-	git ci -m "Generated gh-pages for `git log master -1 --pretty=short --abbrev-commit`" && git push origin gh-pages ; git checkout master
+	git commit -m "Generated gh-pages for `git log master -1 --pretty=short --abbrev-commit`" && git push origin gh-pages
+	git checkout master
+
